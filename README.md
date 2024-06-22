@@ -9,8 +9,9 @@ A brief description of what this project does and who it's for.
 3. Usage
 4. Contributing
 5. Team Members
-6. Task Assignments
-7. License
+6. Sprints Overview
+7. Task Assignments
+8. License
 
 ## Introduction
 
@@ -99,23 +100,37 @@ Guidelines for contributing to the project.
 
 ## Team Members
 
-- Alice - Project Manager
-- Bob - Lead Developer
-- Charlie - Frontend Developer
-- Dana - Backend Developer
-- Eve - QA Tester
+- Nguyễn Hoan - SE170243
+- Trần Tấn Phát - SE170312
+- Đỗ Minh Quang - SE170316
+- Trần Lê Trung Trường - SE173154
+- Phạm Minh Long - SE161578
+- Hồ Huy Hưng - SE173110
 
 ## Task Assignments
+- Nguyễn Hoan : 
+- Trần Tấn Phát:
+- Đỗ Minh Quang:
+- Trần Lê Trung:
+- Phạm Minh Long:
+- Hồ Huy Hưng:
+## Sprints Overview
 
-| Task                        | Assignee  | Status       |
-|-----------------------------|-----------|--------------|
-| Project Planning            | Alice     | Completed    |
-| Setup Project Repository    | Bob       | In Progress  |
-| Design User Interface       | Charlie   | Not Started  |
-| Implement Backend APIs      | Dana      | In Progress  |
-| Write Unit Tests            | Eve       | Not Started  |
-| Conduct Code Reviews        | All       | Ongoing      |
+### Sprint 1: Setup
+- Focus: System environment setup and basic configuration
+- Epics: Environment Setup, Initial Project Configuration
 
+### Sprint 2: Business Flow
+- Focus: Core business processes and user interactions
+- Epics: Jewelry Submission and Valuation, Auction Scheduling and Execution, Auction Participation and Result Notification
+
+### Sprint 3: Reports
+- Focus: Report generation and accuracy
+- Epics: Seller Reports, Buyer Reports, Admin and Overall Auction Reports
+
+### Sprint 4: Dashboard
+- Focus: Dashboard functionality and real-time data visualization
+- Epics: Real-time Statistics Dashboard, User-Specific Dashboards, Admin Dashboard and Alerts
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
