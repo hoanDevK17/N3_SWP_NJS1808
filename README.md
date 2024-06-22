@@ -106,12 +106,12 @@ Guidelines for contributing to the project.
 
 ## Task Assignments
 ### Sprint 1: Setup
-- Nguyễn Hoan : TC6-TC8
-- Trần Tấn Phát:TC17-TC21
-- Đỗ Minh Quang:TC09-TC12
+- Nguyễn Hoan : US3
+- Trần Tấn Phát:US4
+- Đỗ Minh Quang:US2
 - Trần Lê Trung Trường:
-- Phạm Minh Long:TC01-TC05
-- Hồ Huy Hưng:TC13-TC16
+- Phạm Minh Long:US1
+- Hồ Huy Hưng:
 ## Sprints Overview
 
 ### Sprint 1: Setup
