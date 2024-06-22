@@ -2,7 +2,9 @@ package online.jeweljoust.BE.api;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import online.jeweljoust.BE.entity.Account;
+import online.jeweljoust.BE.entity.Shipment;
 import online.jeweljoust.BE.entity.Wallet;
+import online.jeweljoust.BE.enums.AccountRole;
 import online.jeweljoust.BE.enums.AccountStatus;
 import online.jeweljoust.BE.model.*;
 import online.jeweljoust.BE.service.AuthenticationService;
@@ -11,7 +13,6 @@ import online.jeweljoust.BE.service.WalletService;
 import online.jeweljoust.BE.utils.AccountUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +57,7 @@ public class AuthenticationAPI {
     // }
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequest registerRequest) {
+        Shipment shipment = new Shipment();
         Account account = authenticationService.register(registerRequest);
         if(account!=null){
             System.out.println(account);
@@ -77,6 +79,19 @@ public class AuthenticationAPI {
     public ResponseEntity<List<Account>> getAccounts() {
         List<Account> accounts = authenticationService.getAllAccount();
         return ResponseEntity.ok(accounts);
+    }
+    @GetMapping("/account/{role}")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<List<Account>> getAccountsByRole(@PathVariable AccountRole role) {
+        List<Account> accounts = authenticationService.getAllAccountRole(role);
+        return ResponseEntity.ok(accounts);
+    }
+
+    @PutMapping("/account/changePassword")
+//    @PreAuthorize("hasAuthority('MEMBER')")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
+        String message = authenticationService.changePassword(changePasswordRequest);
+        return ResponseEntity.ok(message);
     }
 
     @GetMapping("/testcurrent")
@@ -109,7 +124,7 @@ public class AuthenticationAPI {
     }
 
     @PostMapping("/reset-password")
-    public void resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+    public void resetPassword(@ RequestBody ResetPasswordRequest resetPasswordRequest) {
         authenticationService.resetPassword(resetPasswordRequest);
     }
 
@@ -154,4 +169,9 @@ public class AuthenticationAPI {
         emailDetail.setMsgBody("abc");
         emailService.sendMailTemplate(emailDetail);
     }
+    @GetMapping("/refreshBalance")
+    public double refreshBalance() {
+        return walletService.refreshBalance();
+    }   
+
 }

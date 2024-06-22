@@ -1,6 +1,6 @@
 username,password,Role
-string,string,ADMIN
-member,member,MEMBER
+admin,admin,ADMIN
+hoan,hoan,MEMBER
 quang,quang,ADMIN
 hoan123,hoan123,MEMBER
 wrongpass,wrongpass,MEMBER

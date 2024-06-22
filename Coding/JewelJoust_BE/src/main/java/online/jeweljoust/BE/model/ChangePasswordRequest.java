@@ -6,10 +6,11 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 
+@Service
 @Getter
 @Setter
-@Data
-
-public class ResourceRequest {
-    String path;
+public class ChangePasswordRequest
+{
+    String oldPassword;
+    String newPassword;
 }

@@ -1,7 +1,6 @@
+package online.jeweljoust.BE;
+
 import jakarta.validation.constraints.NotNull;
-import online.jeweljoust.BE.BeApplication;
-import online.jeweljoust.BE.Demo.Demo;
-import online.jeweljoust.BE.entity.Account;
 import online.jeweljoust.BE.model.AccountReponse;
 import online.jeweljoust.BE.model.LoginRequest;
 import online.jeweljoust.BE.respository.AuthenticationRepository;
@@ -28,7 +27,7 @@ public class TestDemo {
     @Test
     @ParameterizedTest
     @CsvFileSource(resources = "/login.csv",numLinesToSkip = 1)
-    public void checkRoleAccountLogin(@NotNull String username,@NotNull String password,@NotNull String role) {
+    public void checkRoleAccountLogin(String username,String password,String role) {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setPassword(username);
         loginRequest.setUsername(password);

@@ -2,11 +2,11 @@ package online.jeweljoust.BE.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import online.jeweljoust.BE.enums.AuctionRequestStatus;
+import online.jeweljoust.BE.enums.ShipmentStatus;
 
 import java.time.LocalDateTime;
 
@@ -20,14 +20,13 @@ public class Shipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
-    LocalDateTime receiveddate;
+
+    LocalDateTime receivedDate;
 
     @Enumerated(EnumType.STRING)
-    AuctionRequestStatus.shipmentStatus status;
+    ShipmentStatus status;
 
-    @OneToOne
-    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "staff_id_received")
     Account accountShipment;
 

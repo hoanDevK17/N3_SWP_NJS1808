@@ -6,7 +6,7 @@ import online.jeweljoust.BE.entity.AuctionSession;
 import online.jeweljoust.BE.enums.AuctionRequestStatus;
 import online.jeweljoust.BE.enums.AuctionSessionStatus;
 import online.jeweljoust.BE.model.AuctionSessionRequest;
-import online.jeweljoust.BE.respository.AuctionRepository;
+import online.jeweljoust.BE.respository.AuctionRequestRepository;
 import online.jeweljoust.BE.respository.AuctionSessionRepository;
 import online.jeweljoust.BE.respository.AuthenticationRepository;
 import online.jeweljoust.BE.utils.AccountUtils;
@@ -27,16 +27,18 @@ public class AuctionSessionService {
     @Autowired
     AuthenticationRepository authenticationRepository;
     @Autowired
-    AuctionRepository auctionRepository;
+    AuctionRequestRepository auctionRepository;
     public List<AuctionSession> getAllAuctionSessions(){
         return auctionSessionRepository.findAll();
     }
     public AuctionSession addAuctionSessions(AuctionSessionRequest auctionSessionRequest){
 
         AuctionSession auctionSession = new AuctionSession();
-        AuctionRequest auctionRequest = auctionRepository.findById(auctionSessionRequest.getAuction_request_id());
-                if(auctionRequest==null || auctionRequest.getUltimateValuation().getStatus() != AuctionRequestStatus.ultimateStatus.APPROVED){
-                    throw new IllegalStateException("Can't find auctionRequest or auctionRequest don't is APPROVED");
+        AuctionRequest auctionRequest = auctionRepository.findAuctionRequestById(auctionSessionRequest.getAuction_request_id());
+        System.out.println(auctionRequest.getStatus());
+                if(auctionRequest==null ||
+                        !auctionRequest.getStatus().equals(AuctionRequestStatus.APPROVED) ){
+                    throw new IllegalStateException("Not support this AuctionRequest");
                 }
         auctionSession.setAuctionRequest(auctionRequest);
         auctionSession.setManagerSession(accountUtils.getAccountCurrent());
@@ -62,7 +64,7 @@ public class AuctionSessionService {
     }
     public AuctionSession updateAuctionSession(long id, AuctionSessionRequest auctionSessionRequest){
         AuctionSession auctionSession =  auctionSessionRepository.findAuctionSessionById(id);
-        auctionSession.setAuctionRequest(auctionRepository.findById(auctionSessionRequest.getAuction_request_id()));
+        auctionSession.setAuctionRequest(auctionRepository.findAuctionRequestById(auctionSessionRequest.getAuction_request_id()));
         auctionSession.setManagerSession(accountUtils.getAccountCurrent());
         auctionSession.setStaffSession(authenticationRepository.findById(auctionSessionRequest.getStaff_id()));
         auctionSession.setStart_time(auctionSessionRequest.getStart_time());

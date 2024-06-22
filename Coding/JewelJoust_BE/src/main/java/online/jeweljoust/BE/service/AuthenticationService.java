@@ -4,10 +4,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseToken;
 import online.jeweljoust.BE.config.SecurityConfig;
 import online.jeweljoust.BE.entity.Account;
-import online.jeweljoust.BE.entity.Wallet;
 import online.jeweljoust.BE.enums.AccountRole;
 import online.jeweljoust.BE.enums.AccountStatus;
-import online.jeweljoust.BE.exception.InvalidPasswordException;
+import online.jeweljoust.BE.exception.AuthException;
 import online.jeweljoust.BE.model.*;
 import online.jeweljoust.BE.respository.AuthenticationRepository;
 import online.jeweljoust.BE.utils.AccountUtils;
@@ -55,6 +54,7 @@ public class AuthenticationService implements UserDetailsService {
 
     @Autowired
     EmailService emailService;
+
     @Autowired
     WalletService walletService;
 
@@ -75,7 +75,7 @@ public class AuthenticationService implements UserDetailsService {
 
     public Account registerHaveRole(RegisterRequest registerRequest) throws AuthenticationServiceException{
         Account account = new Account();
-            account.setRole(registerRequest.getRole().equals(AccountRole.MANAGER)?AccountRole.MANAGER:AccountRole.STAFF);
+            account.setRole(registerRequest.getRole());
             account.setUsername(registerRequest.getUsername());
             account.setFullname(registerRequest.getFullname());
             account.setAddress(registerRequest.getAddress());
@@ -127,13 +127,13 @@ public class AuthenticationService implements UserDetailsService {
                 account = new Account();
                 account.setFullname(firebaseToken.getName());
                 account.setEmail(firebaseToken.getEmail());
+                account.setRole(AccountRole.MEMBER);
+                account.setStatus(AccountStatus.ACTIVE);
                 account.setUsername(email);
                 account = authenticationRepository.save(account);
                 if(account.getId()!=null){
                     account.setWallet(walletService.registerWallet(account));
                 }
-
-
             }
             accountReponse.setId(account.getId());
             accountReponse.setFullname(account.getFullname());
@@ -148,6 +148,9 @@ public class AuthenticationService implements UserDetailsService {
 
     public List<Account> getAllAccount(){
         return authenticationRepository.findAll();
+    }
+    public List<Account> getAllAccountRole(AccountRole role){
+        return authenticationRepository.findByRole(role);
     }
 
     public void forgotPassword(ForgotPasswordRequest forgotPasswordRequest) {
@@ -188,7 +191,7 @@ public class AuthenticationService implements UserDetailsService {
     }
 
     public Account updateProfile(UpdateProfileRequest updateProfileRequest) {
-        Account account = authenticationRepository.findById(updateProfileRequest.getId());
+
 //        account.setFullname(updateProfileRequest.getFullname());
 //        account.setAddress(updateProfileRequest.getAddress());
 //        account.setBirthday(updateProfileRequest.getBirthday());
@@ -199,29 +202,33 @@ public class AuthenticationService implements UserDetailsService {
 //                account.setPassword(passwordEncoder.encode(updateProfileRequest.getNewPassword()));
 //            }
 //        }
-        if (updateProfileRequest.getFullname() != null) {
-            account.setFullname(updateProfileRequest.getFullname());
-        }
-        if (updateProfileRequest.getAddress() != null) {
-            account.setAddress(updateProfileRequest.getAddress());
-        }
-        if (updateProfileRequest.getBirthday() != null) {
-            account.setBirthday(updateProfileRequest.getBirthday());
-        }
-        if (updateProfileRequest.getEmail() != null) {
-            account.setEmail(updateProfileRequest.getEmail());
-        }
-        if (updateProfileRequest.getPhone() != null) {
-            account.setPhone(updateProfileRequest.getPhone());
-        }
-        if (updateProfileRequest.getNewPassword() != null && !updateProfileRequest.getNewPassword().equals(updateProfileRequest.getOldPassword())) {
-            if (passwordEncoder.encode(updateProfileRequest.getOldPassword()).equals(account.getPassword())){
-                account.setPassword(passwordEncoder.encode(updateProfileRequest.getNewPassword()));
-            } else {
-                throw new InvalidPasswordException("Old password incorrect or new password not match!!!");
+        if(accountUtils.getAccountCurrent().getRole().equals(AccountRole.ADMIN)||accountUtils.getAccountCurrent().getId() == updateProfileRequest.getId())
+        {
+            Account account = authenticationRepository.findById(updateProfileRequest.getId());
+            if (updateProfileRequest.getFullname() != null) {
+                account.setFullname(updateProfileRequest.getFullname());
             }
+            if (updateProfileRequest.getAddress() != null) {
+                account.setAddress(updateProfileRequest.getAddress());
+            }
+            if (updateProfileRequest.getBirthday() != null) {
+                account.setBirthday(updateProfileRequest.getBirthday());
+            }
+            if (updateProfileRequest.getEmail() != null) {
+                account.setEmail(updateProfileRequest.getEmail());
+            }
+            if (updateProfileRequest.getPhone() != null) {
+                account.setPhone(updateProfileRequest.getPhone());
+                if(accountUtils.getAccountCurrent().getRole().equals(AccountRole.ADMIN)){
+                        account.setStatus(updateProfileRequest.getStatus());
+                }
+            }
+            return authenticationRepository.save(account);
         }
-        return authenticationRepository.save(account);
+        else{
+            throw new AuthException("Can't access to edit");
+        }
+
     }
 
     public List<Account> getAccountByName(String name) {
@@ -236,9 +243,17 @@ public class AuthenticationService implements UserDetailsService {
 
     public void deleteAccountById(long id) {
         authenticationRepository.deleteById(id);
-
     }
-    public String toTest(){
-        return "Oke";
+
+    public String changePassword(ChangePasswordRequest changePasswordRequest) {
+        Account account = authenticationRepository.findByUsername(accountUtils.getAccountCurrent().getUsername());
+        if (securityConfig.passwordEncoder().matches(changePasswordRequest.getOldPassword(), account.getPassword())) {
+            account.setPassword(passwordEncoder.encode(changePasswordRequest.getNewPassword()));
+            authenticationRepository.save(account);
+            return "Change password Succesfully";
+        }
+        else{
+            return "Changed password not successfully";
+        }
     }
 }

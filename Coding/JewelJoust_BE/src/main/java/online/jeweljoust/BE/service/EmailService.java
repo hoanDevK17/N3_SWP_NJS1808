@@ -23,7 +23,7 @@ public class EmailService {
         try{
             Context context = new Context();
 
-            context.setVariable("name", "Hoan");
+            context.setVariable("name", emailDetail.getFullName());
             context.setVariable("link", emailDetail.getLink());
             context.setVariable("button", emailDetail.getButtonValue());
 
@@ -34,7 +34,7 @@ public class EmailService {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
 
             // Setting up necessary details
-            mimeMessageHelper.setFrom("phatttse170312@fpt.edu.vn");
+            mimeMessageHelper.setFrom("jeweljoust@gmail.com");
             mimeMessageHelper.setTo(emailDetail.getRecipient());
             mimeMessageHelper.setText(text, true);
             mimeMessageHelper.setSubject(emailDetail.getSubject());
