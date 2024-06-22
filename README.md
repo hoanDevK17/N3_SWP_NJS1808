@@ -2,18 +2,10 @@
 
 A brief description of what this project does and who it's for.
 
-## Installation
-
-Instructions for setting up the project locally.
-
-## Usage
-
-Examples of how to use the project.
-
-## Contributing
-
-Guidelines for contributing to the project.
-
-## License
-
-License information.
+## Table of Contents
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Contributing](#contributing)
+4. [Team Members](#team-members)
+5. [Task Assignments](#task-assignments)
+6. [License](#license)
