@@ -10,7 +10,8 @@ A brief description of what this project does and who it's for.
 5. Team Members
 6. Sprints Overview
 7. Task Assignments
-8. License
+8. SRS (Software Requirements Specification)
+9. License
 
 ## Introduction
 
@@ -128,6 +129,8 @@ Guidelines for contributing to the project.
 ### Sprint 4: Dashboard
 - Focus: Dashboard functionality and real-time data visualization
 - Epics: Real-time Statistics Dashboard, User-Specific Dashboards, Admin Dashboard and Alerts
+## SRS (Software Requirements Specification)
+https://docs.google.com/document/d/1DMFsP5bhomK9VnVptUYFUH6j9FFTqyHAr9cyv1TxTrM/edit?usp=sharing
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
