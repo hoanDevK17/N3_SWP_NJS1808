@@ -1,15 +1,16 @@
+
 # Jewelry Auction Management System
 
 A brief description of what this project does and who it's for.
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Contributing](#contributing)
-5. [Team Members](#team-members)
-6. [Task Assignments](#task-assignments)
-7. [License](#license) 
+1. Introduction
+2. Installation
+3. Usage
+4. Contributing
+5. Team Members
+6. Task Assignments
+7. License
 
 ## Introduction
 
@@ -54,6 +55,14 @@ cd your-repository-name/backend
 
 # Install dependencies
 ./mvnw install
+
+# Run the Spring Boot application
+./mvnw spring-boot:run
+```
+
+### Frontend (ReactJS)
+
+```bash
 # Navigate to the frontend directory
 cd your-repository-name/frontend
 
@@ -62,6 +71,13 @@ npm install
 
 # Run the React application
 npm run dev
+```
+
+## Usage
+
+Examples of how to use the project.
+
+```bash
 # Start the backend server
 cd backend
 ./mvnw spring-boot:run
@@ -69,8 +85,37 @@ cd backend
 # Start the frontend server
 cd frontend
 npm run dev
+```
 
+## Contributing
 
+Guidelines for contributing to the project.
 
-# Run the Spring Boot application
-./mvnw spring-boot:run
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a pull request
+
+## Team Members
+
+- Alice - Project Manager
+- Bob - Lead Developer
+- Charlie - Frontend Developer
+- Dana - Backend Developer
+- Eve - QA Tester
+
+## Task Assignments
+
+| Task                        | Assignee  | Status       |
+|-----------------------------|-----------|--------------|
+| Project Planning            | Alice     | Completed    |
+| Setup Project Repository    | Bob       | In Progress  |
+| Design User Interface       | Charlie   | Not Started  |
+| Implement Backend APIs      | Dana      | In Progress  |
+| Write Unit Tests            | Eve       | Not Started  |
+| Conduct Code Reviews        | All       | Ongoing      |
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
