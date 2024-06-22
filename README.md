@@ -1,4 +1,3 @@
-
 # Jewelry Auction Management System
 
 A brief description of what this project does and who it's for.
@@ -47,48 +46,43 @@ Online jewelry auction management software for the auction company.
 
 ### Backend (Java Spring Boot)
 
-```bash
-# Clone the repository
+Clone the repository:
 git clone https://github.com/hoanDevK17/JewelJoust_BE.git
 
-# Navigate to the backend directory
+Navigate to the backend directory:
 cd JewelJoust_BE/backend
 
-# Install dependencies
+Install dependencies:
 ./mvnw install
 
-# Run the Spring Boot application
+Run the Spring Boot application:
 ./mvnw spring-boot:run
-```
 
 ### Frontend (ReactJS)
 
-```bash
-# Clone the repository
+Clone the repository:
 git clone https://github.com/hoanDevK17/JewelJoust_FE.git
-# Navigate to the frontend directory
+
+Navigate to the frontend directory:
 cd JewelJoust_FE/frontend
 
-# Install dependencies
+Install dependencies:
 npm install
 
-# Run the React application
+Run the React application:
 npm run dev
-```
 
 ## Usage
 
 Examples of how to use the project.
 
-```bash
-# Start the backend server
+Start the backend server:
 cd backend
 ./mvnw spring-boot:run
 
-# Start the frontend server
+Start the frontend server:
 cd frontend
 npm run dev
-```
 
 ## Contributing
 
