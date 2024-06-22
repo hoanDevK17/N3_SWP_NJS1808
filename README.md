@@ -49,10 +49,10 @@ Online jewelry auction management software for the auction company.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/your-repository-name.git
+git clone https://github.com/hoanDevK17/JewelJoust_BE.git
 
 # Navigate to the backend directory
-cd your-repository-name/backend
+cd JewelJoust_BE/backend
 
 # Install dependencies
 ./mvnw install
@@ -64,8 +64,10 @@ cd your-repository-name/backend
 ### Frontend (ReactJS)
 
 ```bash
+# Clone the repository
+git clone https://github.com/hoanDevK17/JewelJoust_FE.git
 # Navigate to the frontend directory
-cd your-repository-name/frontend
+cd JewelJoust_FE/frontend
 
 # Install dependencies
 npm install
@@ -108,12 +110,13 @@ Guidelines for contributing to the project.
 - Hồ Huy Hưng - SE173110
 
 ## Task Assignments
-- Nguyễn Hoan : 
+### Sprint 1: Setup
+- Nguyễn Hoan : TC6-TC8
 - Trần Tấn Phát:
-- Đỗ Minh Quang:
-- Trần Lê Trung:
-- Phạm Minh Long:
-- Hồ Huy Hưng:
+- Đỗ Minh Quang:TC09-TC12
+- Trần Lê Trung Trường:
+- Phạm Minh Long:TC01-TC05
+- Hồ Huy Hưng:TC13-TC16
 ## Sprints Overview
 
 ### Sprint 1: Setup
