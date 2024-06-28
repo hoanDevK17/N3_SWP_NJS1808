@@ -106,11 +106,11 @@ Guidelines for contributing to the project.
 
 ## Task Assignments
 ### Sprint 1: Setup
-- Nguyễn Hoan : US3
-- Trần Tấn Phát:US4
-- Đỗ Minh Quang:US2
+- Nguyễn Hoan : US3 - Employee sends preliminary appraisal to the seller, US4 - Employee confirms receipt of the jewelry
+- Trần Tấn Phát: US2- Create Auction Sell Request
+- Đỗ Minh Quang:US1 - View Sales Request History
 - Trần Lê Trung Trường:
-- Phạm Minh Long:US1
+- Phạm Minh Long:
 - Hồ Huy Hưng:
 ## Sprints Overview
 
