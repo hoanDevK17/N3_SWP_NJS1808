@@ -109,9 +109,9 @@ Guidelines for contributing to the project.
 - Nguyễn Hoan : US3 - Employee sends preliminary appraisal to the seller, US4 - Employee confirms receipt of the jewelry
 - Trần Tấn Phát: US2- Create Auction Sell Request
 - Đỗ Minh Quang:US1 - View Sales Request History
-- Trần Lê Trung Trường:
-- Phạm Minh Long:
-- Hồ Huy Hưng:
+- Trần Lê Trung Trường: US6 - User Account Lock , US6 - Role Settings for Accounts  US7 - Arrange Roles for Accounts
+- Phạm Minh Long:US5 - Edit Account Information 
+- Hồ Huy Hưng: 
 ## Sprints Overview
 
 ### Sprint 1: Setup
